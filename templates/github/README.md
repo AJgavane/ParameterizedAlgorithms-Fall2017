@@ -17,8 +17,8 @@ Please initialize your repository using the following steps:
 
 5. Create folders `Week-1` through `Week-17` and add `README.md` files to each one. These folders correspond to the weeks outlined in the syllabus (Page 5) and will be used for all individual artifacts such as weekly problem writeups, research notes, etc. In general, you should update each folder's `README.md` with any notes the TA needs to compile your latex, etc. Specific instructions on format will be provided with future assignments.
 
-6. Once you've pushed these folders, invite the course instructor ([bdsullivan](https://github.com/bdsullivan/)) and TA ([tdgoodrich](https://github.com/tdgoodrich)) to your repository, and direct message a link to your repository to Timothy on Slack. Feel free to direct message Timothy if you have any problems or concerns along the way.
+6. Once you've pushed these folders, invite the course instructor ([bdsullivan](https://github.com/bdsullivan/)) and TA ([tdgoodrich](https://github.com/tdgoodrich)) to your repository as collaborators (`Settings -> Collaborators`), then direct message a link to your repository to Timothy on Slack. Feel free to direct message Timothy if you have any problems or concerns along the way.
 
 ## Example
 
-See the `tdgoodri_PAC_2017` folder example folder, where Timothy has included `Week-0` folder. Read through its README to see what a typical submission might look like. 
+See the `tdgoodri_PAC_2017` folder example folder, where Timothy has included `Week-0` folder. Read through its README to see what a typical submission might look like.
