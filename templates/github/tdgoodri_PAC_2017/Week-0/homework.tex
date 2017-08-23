@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{(False) Theorem}
+\newtheorem{definition}{Definition}
+
+\title{CSC791 Week 0: Homework 0}
+\author{Timothy Goodrich}
+
+\begin{document}
+\maketitle
+
+\subsection*{Problem 1}
+\begin{theorem}
+All students at NC State have the same major.
+\end{theorem}
+
+\begin{proof}
+We proceed by induction:
+
+\noindent\underline{Base case:} $n = 1$. One NC State student has the same major, so the claim is true.
+
+\noindent\underline{Induction step:} Suppose the claim is true for $k$ students, we will show that it is also true for $k+1$ students. Label our students $S = \{x_1, x_2, \dots, x_{k+1}\}$ and split the students into two subsets: $S_1 = S \setminus \{x_2\}$ and $S_2 = S \setminus \{x_3\}$. By the induction hypothesis, all students in $S_1$ have the same major, and all students in $S_2$ have the same major. But $x_1$ is in both sets, therefore all students have the same major.
+\end{proof}
+
+\end{document}
