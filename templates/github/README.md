@@ -4,7 +4,7 @@
 
 Please initialize your repository using the following steps:
 
-1. You'll need to use an account on [GitHub](https://github.com/). Note that this is not the NC State GitHub, but the standard one. You are welcome to sign up with your NCSU email or any other email address.
+1. You'll need to use an account on [GitHub](https://github.com/). Note that this is **not** the NC State GitHub, but the standard external one. You are welcome to sign up with your NCSU email or any other email address. Either way, you should add your NCSU email account to your profile in order to get the [GitHub Student Developer Pack](https://education.github.com/pack). You will need this student pack in order to create unlimited private repositories. 
 
 2. If you are unfamiliar with GitHub, git, or Markdown files, we recommend you start with the following tutorials:
  - [GitHub Hello World](https://guides.github.com/activities/hello-world/)
