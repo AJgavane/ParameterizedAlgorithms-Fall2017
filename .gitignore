@@ -1,0 +1,12 @@
+# Latex Auxiliary Files #
+######################
+*.log
+*.aux 
+*.toc
+
+
+# OS generated files #
+######################
+.DS_Store
+*.synctex.gz
+*~
