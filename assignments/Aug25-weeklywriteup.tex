@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Week 2 Proof Writeup (Aug 25)}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\subsection*{Definitions \& Notation}
+\begin{definition}
+A graph $G$ is a \emph{cluster graph} if every connected component of $G$ is a clique.
+\end{definition}
+
+\begin{definition}
+A subgraph $H = (V',E') \subseteq G = (V,E)$ is \emph{induced} if
+$E' = \{(u,v) \in E \,|\, u,v \in V'\}$.
+\end{definition}
+
+\begin{definition}
+For a graph $G = (V,E)$, and $F \subseteq \binom{V}{2}$, we write $G \triangle F$
+for the graph $H = (V,E')$ with
+$E' = \left(E \cup \{(u,v) \in F \cap E \}\right) \setminus \{(u,v) \in F \setminus E\}$.
+That is, the edges of $H$ are exactly those edges of $G$ which are not in $F$ plus any
+non-edges of $G$ which are in $F$ (the symmetric difference).
+\end{definition}
+
+
+\defproblem{$k$-ClusterEditing}
+%
+{A graph $G = (V,E)$ and a non-negative integer $k$}
+%
+{$k$}
+%
+{Is there a set $F \subseteq \binom{V}{2}$ of size at most~$k$ such that $G \triangle F$
+  is a cluster graph?}
+%
+
+
+\subsection*{Proofs Required}
+\begin{lemma}
+A graph $G$ is a cluster graph if and only if $G$ has no induced $P_3$'s.
+\end{lemma}
+
+\begin{theorem} ({\small Exercise 2.5 in Cygan et al.}) $k$-\pname{ClusterEditing} has a kernel with $O(k^2)$
+  vertices.
+\end{theorem}
+
+
+\vfill
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Due at 9:00 am on Friday, September 1.
+\item Please put your name in a comment at the top of your tex file (but {\it do not
+have it display in the PDF}). This will help prevent any bias in grading.
+\item Keep all files in \texttt{Week-2} folder of git repository
+\item Name source file \texttt{homework.tex}
+\item Upload a compiled version named \texttt{compiled\_homework.pdf}
+\end{itemize}
+
+\end{document}
