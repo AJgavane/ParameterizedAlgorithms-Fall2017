@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Week 3 Proof Writeup (Sept 1)}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\subsection*{Definitions \& Notation}
+\begin{definition}
+A formula $F$ is in \emph{$r$-CNF} (conjunctive normal form) if for some positive
+integer $n$, $F = C_1 \land C_2 \land \cdots \land C_n$, where each $C_i$ is a \emph{clause} which
+consists of exactly $r$ literals and/or their negations \textsc{OR}'ed together, i.e.
+$C_i = x_1 \lor \neg x_2 \lor \cdots \lor x_r$.
+\end{definition}
+
+
+\defproblem{Min-$2$-SAT}
+%
+{A 2-CNF formula $\phi$ and a non-negative integer $k$}
+%
+{$k$}
+%
+{Is there an assignment for $\phi$ that satisfies at most~$k$ clauses?}
+%
+
+
+\subsection*{Proofs Required}
+
+\begin{theorem} ({\small Exercise 3.13 in Cygan et al.}) \pname{Min-2-SAT} can be solved in
+  time $2^kn^{O(1)}$ using a bounded search tree algorithm.
+\end{theorem}
+
+
+\vfill
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Due at 9:00 am on Friday, September 8.
+\item Use the \href{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/homework}{latex homework template}.
+\item Please put your name in a comment at the top of your tex file (but {\it do not
+have it display in the PDF}). This will help prevent any bias in grading.
+\item Keep all files in \texttt{Week-3} folder of git repository
+\item Name source file \texttt{homework.tex}
+\item Upload a compiled version named \texttt{compiled\_homework.pdf}
+\end{itemize}
+
+\end{document}
