@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Week 4 Proof Writeup (Sept 8)}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\subsection*{Definitions \& Notation}
+\begin{definition}
+    A \emph{proper vertex coloring} of a graph $G$ \emph{using $k$ colors}
+    is a function $c: V(G) \rightarrow \{1,\ldots, k\}$ so that if $uv \in E(G)$,
+    $c(u) \neq c(v)$.
+\end{definition}
+
+
+\defproblem{$k$-Coloring-VC}
+%
+{A graph $G$, a vertex cover $X$ of $G$ with $|X| = \ell$, and a non-negative integer $k$}
+%
+{$\ell$}
+%
+{Is there a proper vertex coloring of $G$ using at most~$k$ colors?}
+%
+
+
+\subsection*{Proofs Required}
+
+\begin{theorem} $k$-\pname{Coloring-VC} is in FPT (there is an $f(\ell)n^{O(1)}$ algorithm).
+\end{theorem}
+
+
+\vfill
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Due at 9:00 am on Friday, September 15.
+\item Use the \href{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/homework}{latex homework template}.
+\item Please put your name in a comment at the top of your tex file (but {\it do not
+have it display in the PDF}). This will help prevent any bias in grading.
+\item Keep all files in \texttt{Week-3} folder of git repository
+\item Name source file \texttt{homework.tex}
+\item Upload a compiled version named \texttt{compiled\_homework.pdf}
+\end{itemize}
+
+\end{document}
