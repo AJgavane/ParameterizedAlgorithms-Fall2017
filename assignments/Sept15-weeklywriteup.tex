@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Week 5 Proof Writeup (Sept 15)}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\subsection*{Definitions \& Notation}
+\begin{definition}
+    A \emph{tree decomposition} of a graph $G = (V,E)$
+    is a pair $(T, \mathcal{X})$ with tree $T = (I,F)$
+    and bags $\mathcal{X} = \{X_i \subseteq V \,:\, i \in I \}$
+    satisfying
+    \begin{enumerate}
+      \item $\forall v \in V$, $\exists i \in I$ with $v \in X_i$
+      \item $\forall (u,v) \in E$, $\exists j \in I$ with $\{u,v\} \subseteq X_j$
+      \item $\forall v \in V$, $\{i \,:\, v \in X_i\}$ form a connected subtree of $T$
+    \end{enumerate}
+    The \emph{width} of $T$ is $\max\{|X_i| - \}$.
+\end{definition}
+
+\begin{definition} The \emph{treewidth} of a graph $G$, denoted tw$(G)$, is the minimum
+  width of a valid tree decomposition of $G$.
+\end{definition}
+
+
+\subsection*{Proofs Required}
+
+\begin{theorem} Let $G$ be a graph and $(T = (I,F), \mathcal{X})$ a tree decomposition
+  of width at most $k$. Prove that if there are at least $k+1$ vertex-disjoint
+  paths between vertices $x$ and $y$ in $G$, some bag of $(T,\mathcal{X})$ contains
+  both $x$ and $y$.
+\end{theorem}
+
+\subsection*{Additional Problems}
+\textbf{\textit{Do not turn in solutions to these as part of your homework! Feel free
+to discuss them in \#problem-discussion, however.}}
+\begin{theorem} Let $H$ be a complete bipartite graph with parts $A$ and $B$. If $H$
+  is a subgraph of $G$, then every tree decomposition of $G$ includes either a bag
+  that contains $A$ or a bag that contains $B$.
+\end{theorem}
+
+\begin{theorem} Prove that an $n \times n$ planar grid has treewidth at most $n$
+  and treewidth at least $n-1$ by giving strategies for cops and the robber, respectively,
+  in appropriate settings of the Cops \& Robbers game characterizing treewidth.
+\end{theorem}
+
+\vfill
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Due at 9:00 am on Friday, September 22.
+\item Use the \href{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/homework}{latex homework template}.
+\item Please put your name in a comment at the top of your tex file (but {\it do not
+have it display in the PDF}). This will help prevent any bias in grading.
+\item Keep all files in \texttt{Week-5} folder of git repository
+\item Name source file \texttt{homework.tex}
+\item Upload a compiled version named \texttt{compiled\_homework.pdf}
+\end{itemize}
+
+\end{document}
