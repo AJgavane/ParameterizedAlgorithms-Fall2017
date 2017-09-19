@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Opportunity Identification Project}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\subsection*{Project Description and Objectives}
+
+\textbf{This project is designed to give you experience in (1) literature review,
+(2) where to look for open problems, (3) pitching a research direction (e.g. to
+reviewers or funders), and (4) the art of posters.}
+
+\vspace{0.25in}
+
+In this project, teams of two will identify and describe an open problem
+in parameterized complexity and/or algorithm design
+\emph{which you believe might make a good research project} (e.g.
+in this class or for an independent study with Dr. Sullivan's lab)
+\footnote{this means that famous open problems are probably not an appropriate choice
+unless you have a compelling argument for why some special case is tractable}.
+
+\vspace{0.25in}
+
+You will conduct a small literature review to understand what is known about your
+proposed problem (and/or closely related questions), and whether the community has
+made any relevant conjectures. It may also be helpful to skim some recent techniques
+in the field to see if any seem particularly relevant as potential approaches to solve
+the problem. You will then write a brief (2-3 page) report\footnote{The reports will be compiled into a single PDF and made available to the entire class prior to the poster
+session to enable more productive discussion and conversation.} and ``pitch'' your problem
+to the rest of the class in a mini poster session. \emph{Since some of the proposed problems
+will become topics for research projects later in the semester, there's an
+incentive to make yours sound interesting and approachable.}
+
+\vspace{0.25in}
+
+The main questions that each of your project artifacts should answer are:
+(a) What is the open problem?; (b) Why is it interesting?; (c)
+What existing work is closely related?; and (d) Why should someone spend time (or money) on this?.
+Note that the answers to some of these may overlap and/or be difficult to detangle,
+but all four are important objectives for your audience.
+
+\subsection*{Technical Notes}
+
+Please use the \texttt{\#opportunityID} channel in Slack to discuss general questions
+about this project; latex questions (including those about compiling a poster) should go
+in \texttt{\#latex}. We will be providing some tips on good sources for open problems,
+suggestions for impactful poster design, hints on creating figures, etc in the
+coming days, so please watch the channel carefully.
+
+\vspace{0.25in}
+
+You should create a new (private) github repository \texttt{teamX\_project1\_PAC\_2017}
+for this project, where \texttt{X}
+is the single digit number corresponding to your team assignment on Slack.
+Either team member may host the repo, but both members and the instructors
+should have read/write access.
+\textbf{You must send the repo link to the TA via Slack by Friday, Sept 22.}
+
+\newpage
+\subsection*{Report Requirements}
+
+Your report should be between two and three pages plus a bibliography, using
+the standard LaTeX article template (and default margins and fonts). You must include:
+\begin{enumerate}
+  \item A clear, concise abstract
+  \item An introduction that motivates and introduces the problem you're proposing.
+  Please use a problem box to clearly define the open problem itself.
+  \item A short background, including definitions of any non-standard terminology
+  \footnote{\emph{please ask on Slack if you have questions about what needs to be included here - many
+  common graph theory and parameterized algorithms terms may be assumed}}
+  \item A synopsis of related work that describes the history of the problem, whether
+  there have been conjectures about it, and/or any work on related problems or special
+  cases that you feel is relevant
+  \item A discussion of why you feel this is an interesting/approachable open problem
+  (e.g. you may choose to describe promising approaches and/or special cases that seem
+  tractable).
+  \item A bibliography providing complete and corrected formatted citations
+\end{enumerate}
+
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item The report for this project is due at \textbf{9:00 am on Friday, October 6}.
+\item Keep all report/poster files in the \texttt{report} folder of the git repository.
+\item Name your primary source files \texttt{openproblem\_report.tex}.
+\item Upload compiled version named \texttt{compiled\_report.pdf}.
+
+\end{itemize}
+
+\newpage
+
+\subsection*{Poster Requirements}
+
+\begin{itemize}
+    \item Your poster should be visually appealing and include
+    vector graphics that aid in comprehension and support any
+    discussion you envision being common
+    \item Although your poster should not be comprehensive (too much
+    text is a detraction), it should allow a viewer to understand the
+    statement of your problem and what
+    the open questions are \emph{without any verbal explanation}
+    \item Poster dimensions will be prescribed (and updated here) when
+    a template is added to the git repository
+    \item \emph{You are responsible for printing your poster}; the CSC department
+    has a poster printer available in the mailroom on the third floor of EBII
+    (see Carol Allen for access). Do \emph{not} leave printing until the day before!
+\end{itemize}
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Posters will be presented \textbf{in class on Friday, October 13} in two short sessions.
+\item You must post in \#general by noon on Thursday, October 12 designating which of
+your team will present in each session.
+\item Files should be kept in the \texttt{poster} folder of the git repository.
+\item Name your primary source file \texttt{openproblem\_poster.tex}.
+If you choose to use Powerpoint or OpenOffice to create your poster, you should
+instead upload an original source file named
+\texttt{openproblem\_poster.}$\{$\texttt{ppt/pptx/odt}$\}$.
+\item Upload a compiled version named \texttt{compiled\_poster.pdf} to git.
+\end{itemize}
+
+
+\end{document}
