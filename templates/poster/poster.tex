@@ -1,0 +1,256 @@
+% Template file for an a0 landscape poster.
+% Written by Graeme, 2001-03 based on Norman's original microlensing
+% poster.
+%
+% See discussion and documentation at
+% <http://www.astro.gla.ac.uk/users/norman/docs/posters/>
+%
+% $Id: poster-template-landscape.tex,v 1.2 2002/12/03 11:25:46 norman Exp $
+
+
+% Default mode is landscape, which is what we want, however dvips and
+% a0poster do not quite do the right thing, so we end up with text in
+% landscape style (wide and short) down a portrait page (narrow and
+% long). Printing this onto the a0 printer chops the right hand edge.
+% However, 'psnup' can save the day, reorienting the text so that the
+% poster prints lengthways down an a0 portrait bounding box.
+%
+% 'psnup -w85cm -h119cm -f poster_from_dvips.ps poster_in_landscape.ps'
+
+\documentclass[a0]{a0poster}
+% You might find the 'draft' option to a0 poster useful if you have
+% lots of graphics, because they can take some time to process and
+% display. (\documentclass[a0,draft]{a0poster})
+
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength\paperwidth{24in}
+\setlength\paperheight{36in}
+\setlength\textwidth{\paperwidth}
+\setlength\textheight{\paperheight}
+
+% The textpos package is necessary to position textblocks at arbitary
+% places on the page.
+\usepackage[overlay,absolute]{textpos}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,nolistsep}
+% Graphics to include graphics. Times is nice on posters, but you
+% might want to switch it off and go for CMR fonts.
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{wallpaper}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{varwidth}
+\usetikzlibrary{arrows,automata,positioning,shapes,fit}
+
+
+% These colours are tried and tested for titles and headers. Don't
+% over use color!
+
+\definecolor{DarkBlue}{rgb}{0.1,0.1,0.5}
+\definecolor{Red}{rgb}{0.9,0.0,0.1}
+\definecolor{Brown}{rgb}{0.4,0.2,0.01}
+\definecolor{LightGray}{rgb}{0.9,0.9,0.9}
+\definecolor{Sage}{rgb}{0.45,0.9,0.675}
+\definecolor{Yellow}{rgb}{1,.95,.5}
+\definecolor{Gold}{rgb}{1,.84,0}
+\definecolor{mygold}{RGB}{255,204,0}
+\definecolor{chocolate}{RGB}{97,51,24}
+\definecolor{mygreen}{RGB}{173,214,50}
+
+\definecolor{WolfpackRed}{RGB}{204,0,0}
+
+\definecolor{background}{RGB}{255,255,255}
+\definecolor{white}{RGB}{255,255,255}
+\pagecolor{background}
+
+% generate a gradient image using http://www.generateit.net/gradient/
+%   used 1440x1920 for gradient res from #FFFFFF to #D6E8FF
+%   our old color was #B0D5FF
+%\TileWallPaper{40in}{30in}{gradient.png}
+
+\color{black}
+
+
+\definecolor{theorem1}{rgb}{0.154,0.242,0.883}
+\definecolor{corollary1}{rgb}{0.084,0.554,0.199}
+\definecolor{theorem2}{rgb}{0.478,0.141,0.448}
+\definecolor{theorem3}{rgb}{0.189,0.861,0.372}
+\definecolor{theorem4}{rgb}{0.925,0.123,0.138}
+
+\newcommand{\smallspace}{\vspace{2mm}}
+
+% see documentation for a0poster class for the size options here
+\let\Textsize\normalsize
+
+\def\Head#1{\noindent\hbox to \hsize{\hfil{\Huge\color{chocolate} #1}}\bigskip}
+\def\LHead#1{\colorbox{WolfpackRed}{\noindent{\textbf{\Large\color{white} #1}}\bigskip}}
+\def\LHeadtwo#1{\noindent{\LARGE\color{white}
+#1}\bigskip}
+\def\LHeadthree#1{\noindent{\Huge\color{chocolate}
+#1}\bigskip}
+\def\Subhead#1{\noindent{\LARGE\color{black} #1}\bigskip}
+\def\Title#1{\noindent{\textbf{\VeryHuge\color{DarkBlue} #1}}}
+\def\Subtitle#1{\noindent{\textbf{\Huge\color{DarkBlue} #1}}}
+\def\RedFont#1{\noindent{\textbf{\normalsize\color{WolfpackRed} #1}}}
+\def\LHeadfour#1{\colorbox{theorem1}{\noindent{\textbf{\large\color{white} #1}}\bigskip}}
+\def\LHeadfive#1{\colorbox{corollary1}{\noindent{\textbf{\large\color{white} #1}}\bigskip}}
+\def\LHeadsix#1{\colorbox{theorem2}{\noindent{\textbf{\large\color{white} #1}}\bigskip}}
+\def\LHeadseven#1{\colorbox{theorem3}{\noindent{\textbf{\large\color{white} #1}}\bigskip}}
+\def\LHeadeight#1{\colorbox{theorem4}{\noindent{\textbf{\large\color{white} #1}}\bigskip}}
+
+
+% Set up the grid
+%
+% Note that [40mm,40mm] is the margin round the edge of the page --
+% it is _not_ the grid size. That is always defined as
+% PAGE_WIDTH/HGRID and PAGE_HEIGHT/VGRID. In this case we use
+% 23 x 12. This gives us three columns of width 7 boxes, with a gap of
+% width 1 in between them. 12 vertical boxes is a good number to work
+% with.
+%
+% Note however that texblocks can be positioned fractionally as well,
+% so really any convenient grid size can be used.
+%
+
+\usepackage{colortbl}
+\usepackage{multirow,bigdelim}
+\usepackage{arydshln}
+
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+
+
+
+\begin{document}
+
+
+\TPGrid[0.5in,0.5in]{23}{35}
+
+\parindent=0pt
+\parskip=0.5\baselineskip
+
+% for background gradient
+
+
+% Understanding textblocks is the key to being able to do a poster in
+% LaTeX. In
+%
+%    \begin{textblock}{wid}(x,y)
+%    ...
+%    \end{textblock}
+%
+% the first argument gives the block width in units of the grid
+% cells specified above in \TPGrid; the second gives the (x,y)
+% position on the grid, with the y axis pointing down.
+
+% You will have to do a lot of previewing to get everything in the
+% right place.
+
+% This gives good title positioning for a portrait poster.
+% Watch out for hyphenation in titles - LaTeX will do it
+% but it looks awful.
+
+\begin{textblock}{24}(0,0)
+\begin{center}
+\vspace{-0.25in}
+\Huge{\textbf{This is my title and I like it}}\\
+\vspace{0.35in}
+\Large{\textbf{Student A and Student B}}
+ \end{center}
+\end{textblock}
+
+% NC State logo brick to left of title
+% \begin{textblock}{6}(0,0)
+% \begin{center}
+% \includegraphics[width=4in]{images/ncsu.png}
+% \end{center}
+% \end{textblock}
+
+
+
+%***************************************************************
+%                    Problem
+%***************************************************************
+
+%This is a full-width textblock
+\begin{textblock}{22.5}(0,2.4)
+% This is a header
+% We defined it above to use the Wolfpack Red color
+% To make sure all headers are the same height, we hid two "Q"s in the header
+% We hid them by coloring them with Wolfpack Red
+\LHead{\parbox{22.43in}{\begin{center}\textcolor{WolfpackRed}{Q}Problem\textcolor{WolfpackRed}{Q}\end{center}}}\\ %*2*
+
+\vspace{0.35in}
+% We're inputting content about graphs in general
+\input{tex/general_graphs.tex}
+
+% Vertical spaces of 0.2in give a good buffer
+\vspace{0.2in}
+
+% Here's a nice way of using a mid-section header
+\begin{center}
+\Large
+\textbf{Complexity Hierarchy}
+\hrule
+\end{center}
+Reduce computational complexity by introducing a parameter
+\begin{itemize}
+	\item \emph{Natural parameter}:  Size of solution (e.g.~a clique of size $k$)
+	\item \emph{Structural parameter}:  Graph invariant (e.g.~treewidth $k$)
+\end{itemize}
+
+\begin{center}
+	{\input{tikz/hierarchy.tex}}
+\end{center}
+\begin{center}
+	\small
+	\textbf{Figure:  Relationship between various complexity classes.  It is unknown whether there are problems in NP that do not admit any polynomial time algorithm.}
+\end{center}
+
+\end{textblock}
+
+
+%***************************************************************
+%                   Related Work
+%***************************************************************
+%This is a block on the left
+\begin{textblock}{11.25}(0,20)
+\LHead{\parbox{11.43in}{\begin{center}\textcolor{WolfpackRed}{Q}Related Work\textcolor{WolfpackRed}{Q}\end{center}}}\\ %*2*
+
+\vspace{0.35in}
+
+% Again we're inputting from a section file
+% Remember to make the text large again if you changed it
+% (Above we changed the text to Large)
+\large
+\input{tex/intro.tex}
+\end{textblock}
+
+%***************************************************************
+%                   Research Ideas
+%***************************************************************
+
+%This places a block on the right hand side
+\begin{textblock}{11.25}(11.75,24)
+\LHead{\parbox{11.23in}{\begin{center}\textcolor{WolfpackRed}{Q}Research Ideas\textcolor{WolfpackRed}{Q}\end{center}}}\\ %*2*
+
+\begin{center}
+\Huge
+Great Ideas!
+\end{center}
+Diverse set of FPT techniques, including:
+\begin{itemize}
+	\item \textbf{Kernelization:}  Transform instance into a smaller, equivalent instance of size $f(k)$ in polynomial time
+	\item \textbf{Randomization:}  Random branching will give correct solution with high probability after $f(k)$ trials
+	\item \textbf{Iterative Compression:} Starting with a solution of size $k+1$, quickly find a solution of size $k$ or smaller
+\end{itemize}
+
+\end{textblock}
+
+
+
+
+\end{document}
