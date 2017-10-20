@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Week XYZ Proof Writeup (Oct 20)}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\subsection*{Definitions \& Notation}
+\begin{definition}
+    A \emph{tree decomposition} of a graph $G = (V,E)$
+    is a pair $(T, \mathcal{X})$ with tree $T = (I,F)$
+    and bags $\mathcal{X} = \{X_i \subseteq V \,:\, i \in I \}$
+    satisfying
+    \begin{enumerate}
+      \item $\forall v \in V$, $\exists i \in I$ with $v \in X_i$
+      \item $\forall (u,v) \in E$, $\exists j \in I$ with $\{u,v\} \subseteq X_j$
+      \item $\forall v \in V$, $\{i \,:\, v \in X_i\}$ form a connected subtree of $T$
+    \end{enumerate}
+    The \emph{width} of $T$ is $\max\{|X_i| - 1\}$.
+
+    A \emph{path decomposition} is a tree decomposition in which the tree $T$ is a path.
+\end{definition}
+
+\begin{definition} The \emph{treewidth} of a graph $G$, denoted tw$(G)$, is the minimum width of a valid tree decomposition of $G$. The \emph{pathwidth} of a graph $G$, denoted pw$(G)$, is the minimum width of a valid path decomposition of $G$.
+\end{definition}
+
+
+\begin{definition}
+    The All-Pairs Shortest-Paths (APSP) problem asks, given a connected graph $G$, for each pair of nodes $u, v$ in $G$, compute the length of the shortest path connecting $u$ to $v$.
+\end{definition}
+
+\subsection*{Proofs Required}
+
+Let $G$ be a connected graph on $n$ nodes. In class we discussed how there is no currently known ``truly sub-crubic'' algorithm for solving APSP, i.e., no algorithm with runtime $O(n^{3-\varepsilon})$ for some $\varepsilon > 0$.
+
+In the theme of P-FPT (``fully polynomial FPT''), we want to create a truly sub-cubic algorithm for solving APSP by parameterizing by path-width (or tree-width, if you feel more comfortable with that).
+
+\paragraph{Probelem:}
+Let $G$ be a connected graph on $n$ nodes. Suppose you have a path decomposition of width $k$ for $G$. Describe an algorithm for computing APSP for $G$ that runs in $O(k^2 n^2)$ or better. ( $O(k n^2)$ is possible, but not mandatory. ) If for some reason you feel more comfortable using a tree decomposition of width $k$ instead of a path decomposition, you may.
+
+
+\subsection*{Additional Problems}
+\textbf{\textit{Do not turn in solutions to these as part of your homework! Feel free to discuss them in \#problem-discussion, however.}}
+
+    In class we discussed the Pairwise-Neighborhood-Intersection (PNI) problem: for each pair of nodes $u, v$ in your $n$-node graph $G$, compute the size of the intersection of their neighborhoods, i.e., compute $| N(u) \cap N(v) |$.
+    We showed that for a graph with max degree $k$, we can compute all nonzero PNI scores in time $O( k^2 n)$. Now, we want something different...
+
+\begin{theorem}
+    Let $G$ be a connected graph on $n$ nodes, and suppose you are given a tree decomposition of $G$ of width $k$. Show you can compute all nonzero PNI scores in $O(k n^2)$.
+\end{theorem}
+
+You can assume the decomposition is nice. You can assume you have access to nodes' adjacency lists, i.e., a dictionary that returns the neighborhood for any node, \verb| neighb_dict[v] = N(v) |.
+
+
+\vfill
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Due at 9:00 am on Friday, October 20.
+\item Use the \href{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/homework}{latex homework template}.
+\item Please put your name in a comment at the top of your tex file (but {\it do not
+have it display in the PDF}). This will help prevent any bias in grading.
+\item Keep all files in \texttt{Week-XYZ} folder of git repository
+\item Name source file \texttt{homework.tex}
+\item Upload a compiled version named \texttt{compiled\_homework.pdf}
+\end{itemize}
+
+\end{document}
