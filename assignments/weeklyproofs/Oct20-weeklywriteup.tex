@@ -58,20 +58,30 @@
 
 
 \begin{definition}
-    The All-Pairs Shortest-Paths (APSP) problem asks, given a connected graph $G$, for each pair of nodes $u, v$ in $G$, compute the length of the shortest path connecting $u$ to $v$.
+    The All-Pairs Shortest-Paths (\textsc{APSP}) problem asks, given a connected graph $G$, for each pair of nodes $u, v$ in $G$, compute the length of the shortest path connecting $u$ to $v$.
 \end{definition}
 
 \subsection*{Proofs Required}
 
-Let $G$ be a connected graph on $n$ nodes. In class we discussed how there is no currently known ``truly sub-crubic'' algorithm for solving APSP, i.e., no algorithm with runtime $O(n^{3-\varepsilon})$ for some $\varepsilon > 0$.
+Let $G$ be a connected graph on $n$ nodes. In class we discussed how there is no currently known ``truly sub-crubic'' algorithm for solving APSP, i.e., an algorithm with runtime $O(n^{3-\varepsilon})$ for $\varepsilon > 0$. In the theme of P-FPT (``fully polynomial FPT''), we want to create a truly sub-cubic algorithm for solving \textsc{APSP} by parameterizing by pathwidth. Do so, and then prove the following theorem:
 
-In the theme of P-FPT (``fully polynomial FPT''), we want to create a truly sub-cubic algorithm for solving APSP by parameterizing by path-width (or tree-width, if you feel more comfortable with that).
+\begin{theorem}
+Let $G$ be a connected graph and suppose that a path decomposition of $G$ with width $k$ is provided. Then \textsc{APSP} can be computed in time $O(k^2 n^2)$.
+\end{theorem}
 
-\paragraph{Probelem:}
-Let $G$ be a connected graph on $n$ nodes. Suppose you have a path decomposition of width $k$ for $G$. Describe an algorithm for computing APSP for $G$ that runs in $O(k^2 n^2)$ or better. ( $O(k n^2)$ is possible, but not mandatory. ) If for some reason you feel more comfortable using a tree decomposition of width $k$ instead of a path decomposition, you may.
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item Due at 9:00 am on Friday, October 27.
+\item Use the \href{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/homework}{latex homework template}.
+\item Please put your name in a comment at the top of your tex file (but {\it do not
+have it display in the PDF}). This will help prevent any bias in grading.
+\item Keep all files in \texttt{Week-10} folder of git repository
+\item Name source file \texttt{homework.tex}
+\item Upload a compiled version named \texttt{compiled\_homework.pdf}
+\end{itemize}
 
 
-\subsection*{Additional Problems}
+\subsection*{Additional Problems (Not required!)}
 \textbf{\textit{Do not turn in solutions to these as part of your homework! Feel free to discuss them in \#problem-discussion, however.}}
 
     In class we discussed the Pairwise-Neighborhood-Intersection (PNI) problem: for each pair of nodes $u, v$ in your $n$-node graph $G$, compute the size of the intersection of their neighborhoods, i.e., compute $| N(u) \cap N(v) |$.
@@ -85,16 +95,5 @@ You can assume the decomposition is nice. You can assume you have access to node
 
 
 \vfill
-
-\subsubsection*{Submission notes}
-\begin{itemize}
-\item Due at 9:00 am on Friday, October 27.
-\item Use the \href{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/homework}{latex homework template}.
-\item Please put your name in a comment at the top of your tex file (but {\it do not
-have it display in the PDF}). This will help prevent any bias in grading.
-\item Keep all files in \texttt{Week-10} folder of git repository
-\item Name source file \texttt{homework.tex}
-\item Upload a compiled version named \texttt{compiled\_homework.pdf}
-\end{itemize}
 
 \end{document}
