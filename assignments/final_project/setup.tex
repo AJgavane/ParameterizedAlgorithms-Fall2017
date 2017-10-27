@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Final Project}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\section*{Initial Setup Notes}
+Please read this document and start discussing the details with your team on \textbf{Friday, October 27}. The TA will make an initial check on these items on \textbf{Tuesday, October 31}, and all items need to be verified by the TA by \textbf{Friday, November 3 at 9:00AM}.
+
+\subsection*{GitHub Repository}
+
+Have someone in your team create a private GitHub repository with the name \texttt{teamX\_project2\_PAC\_2017}, where \texttt{teamX} should be replaced with \texttt{teamA}, \texttt{teamB}, \texttt{teamC}, or \texttt{teamD}. \emph{Do not use the team name from below}. Invite both Dr. Sullivan and Timothy to the repository with read/write access.
+
+\subsection*{Team Name}
+Decide on an animal-related team name with some association to your approach or problem, run them by Dr. Sullivan, and then post them in \#general. For example, \texttt{Team Woodpecker} might be a team trying to poke holes into existing claims or approaches, or \texttt{Team KAT} may be using Kernelization and Treewidth as their primary tools. Be creative!\\
+
+While this assignment may seem silly, there is an art to picking a project name that correctly describes your work while also making it pop! In the real world, grant applications may require a name or acronym for your proposal, and picking a name that sticks in reviewers'  minds may determine whether you get the grant or not. Additionally, a smart choice may provide a theme for images, which will help you create engaging posters and talks.
+
+\subsection*{Slack Usage}
+
+We have created a channel for each team; these channels will be renamed once team names have been decided. These channels should  contain anything specific to your project. General assignment questions should be posted on \texttt{\#general} channel, and latex questions (including those about the report or talk template) should go in \texttt{\#latex}.
+
+\subsection*{Final Report}
+The final report should be in LIPIcs style, which is a popular \LaTeX ~template for conference in theoretical computer science. You can find this template online, and we have also added it to the templates folder here: \url{https://github.com/bdsullivan/ParameterizedAlgorithms-Fall2017/tree/master/templates/final_report}.
+
+The requirements for the final report are as follows:
+\begin{itemize}
+\item Written in \LaTeX with the LIPIcs style.
+\item 10 pages, including references.
+\item An optional 2 page appendix for additional proofs, tables, and figures. \textbf{Note}: \emph{The appendix is read at the discretion of the reviewer and should not contain major results}.
+\end{itemize}
+
+\newpage
+Please initialize your final report with the following:
+\begin{itemize}
+\item Add a \texttt{report} folder to your team's repository, keep all items relevant to the final report in this folder.
+\item Add a \texttt{report.tex} file that uses the LIPIcs style file.
+\item Initialize the report by adding a title, your team name, and the name of each member.
+\item Provide a \texttt{Makefile} that compiles your project using \texttt{pdflatex} and \texttt{bibtex}.
+\end{itemize}
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item These items will be overviewed in class on \textbf{Friday, October 27}, and the TA will be available for questions.
+\item Try to get all items finished by \textbf{Tuesday, October 31}, at this point the TA will check in with every team. Any issues must be resolved by \textbf{Friday, November 3 at 9:00AM}.
+\end{itemize}
+
+\end{document}
