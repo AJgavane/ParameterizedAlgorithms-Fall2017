@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\newcommand{\problem}[1]{\textsc{#1}}
+
+% Create theorem environments as needed
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem*{observation}{Observation}
+
+\usepackage{tabularx}
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\problem{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+\newcommand{\proofnewline}{\mbox{}\\*}
+\newcommand{\sketch}[1]{{\textcolor{blue}{#1}}}
+
+\newenvironment{proofsketch}{%
+  \renewcommand{\proofname}{Proof Sketch}\proof}{\endproof}
+
+
+\title{Proof Review Exercise \#2}
+\begin{document}
+\maketitle
+
+\section*{Approach \#1}
+\subsection*{Background}
+
+\begin{definition}[Edge-Weighted Graphs]
+An \emph{edge-weighted} graph $G = (V, E, \phi)$ is a graph with a function $\phi : E \to \mathbb{R}$ that defines edge weights. The \emph{length} of a weighted path between two vertices $u, v$ is the sum of the edge weights on this path. The \emph{distance} between two vertices $u, v$ is the shortest length weighted path between $u, v$.
+\end{definition}
+
+\defproblem{Weighted All Pairs Shortest Path by Pathwidth (Weighted-APSP-PW)}
+{An edge-weighted graph $G = (V,E)$ and a path decomposition of width $k$}
+{$k$}
+{Compute the weighted distance between every pairs of vertices in $f(k) n^2$ time}
+
+\begin{lemma}
+\label{lemma:edgebound}
+A graph with a path decomposition of width $k$ has at most $kn$ edges.
+\end{lemma}
+
+\begin{proofsketch}
+Suppose we have a nice path decomposition of width $k$. By definition, this decomposition has $n$ \texttt{introduce} bags. We can argue that each \texttt{introduce} bag can ``introduce'' at most $k$ edges from the original graph, and that this is the only way to introduce edges. Therefore the graph has at most $kn$ edges. \\
+
+\noindent (\emph{Note: This can also be shown by noting that a graph with pathwidth $k$ has degeneracy at most $k$, which provides the same edge bound.})
+\end{proofsketch}
+
+\subsection*{Main Result}
+
+\begin{theorem}
+There is a $O(kn^2)$ algorithm for \textsc{Weighted-ASAP-PW}.
+\end{theorem}
+
+\begin{proof}
+WLOG, assume our graph is connected, otherwise we can run this algorithm on each component. Denote the graph as $G = (V, E)$, let $n = |V|$ and $m = |E|$, and let $k$ be the width of the provided path decomposition. \\
+
+\noindent \emph{Algorithm description:} Run \textsc{Breadth-First Search} (\textsc{BFS}) from each vertex. When $v \in V$ appears at level $\ell$ for a \textsc{BFS} rooted at $u \in V$, then store $dist(u, v) = \ell$. \\
+
+\noindent \emph{Run time:} \textsc{BFS} has a worst case run time of $O(n + m)$, which is at most $O(n + kn) = O(kn)$ by Lemma \ref{lemma:edgebound}. Since \textsc{BFS} is run exactly $n$ times, the total run time is $O(kn^2)$.\\
+
+\noindent \emph{Correctness:} To prove that all distances are computed correctly, we need to prove that $dist(u, v) = \ell$ for an arbitrary $u, v \in V$; we will prove this by contradiction. Assume that $dist(u, v) \neq \ell$, there are two cases to consider:
+
+\begin{itemize}
+\item Assume that $dist(u, v) > \ell$. This must be a contradiction because \textsc{BFS} produced a path from $u$ to $v$ that is only $\ell$ edges long.
+\item Assume that $dist(u, v) < \ell$. Suppose the length of this path is $d$. Let $u = v_0, v_1, \dots, v_d = v$ be the actual shortest path. Then $v_1$ must have appeared in the first \textsc{BFS} level set, $v_2$ in the second, etc., until $v_d = v$ occurs in the $d^\text{th}$ level set. But, by definition of $\ell$, this is also the $\ell^\text{th}$ level set, which contradicts that $d < \ell$.
+\end{itemize}
+
+\noindent In both cases we found a contradiction, therefore $dist(u, v)$ was computed correctly.
+
+\end{proof}
+
+\newpage
+\section*{Approach \#2}
+\subsection*{Background}
+\defproblem{All Pairs Shortest Path by Pathwidth (APSP-PW)}
+{A graph $G = (V,E)$ and a path decomposition of width $k$}
+{$k$}
+{Compute the distance between every pairs of vertices in $f(k) n^2$ time}
+
+\subsection*{Main Result}
+\begin{theorem}
+There is a $O(k^2 n^2)$ algorithm for \textsc{ASAP-PW}.
+\end{theorem}
+
+\begin{proof}
+\proofnewline
+We proceed with dynamic programming over the path decomposition. Maintain two data structures:\\
+
+\noindent \verb|visited = {}| // A set of vertices\newline
+\noindent \verb|APSP = {}| // A hash table that maps a pair of vertices to a distance\\
+
+\noindent Additionally, initialize \verb|visited| to be empty, and \verb|ASAP| with a distance of $\infty$ between every pair of vertices. Iterate over the bags as follows.
+Note that no actions are required for any bags other than \texttt{introduce} bags. Let $X_{i+1}$ be the next \texttt{introduce} bag we encounter during the course of the algorithm, and let $X_i$ be the previous bag so that $X_{i+1} = X_i \cup \{v_{i+1}\}$.
+Then update the data structures as follows:
+\begin{enumerate}
+\item For each $u \in X_{i+1}$ that isn't $v_{i+1}$, set \verb|APSP[(v_{i+1}, u)] = 1|
+\item For each $y \in$ \verb|visited|, if $y \notin X_{i+1}$ then set \verb|APSP|$[(v_{i+1},y)] = 1 + \min\limits_{u \in X_i}$ \verb|APSP|$[(v_{i+1},u)]$
+\item Add $v_{i+1}$ to \verb|visited|
+\end{enumerate}
+
+\noindent \emph{Proof of runtime:}\\
+Only the \texttt{introduce} bags require operations; there are exactly $n$ of these (because each vertex gets introduced exactly once), so there are $n$ total iterations.
+Each iteration consists of computing the distance of the new vertex to the other vertices in the bag, which requires $O(k)$ work, then computing the distance from the new vertex to all previously visited vertices, which takes $O(k)$ per vertex in \texttt{visited}.
+There are never more than $n$ vertices in \texttt{visited}, so the work within an iteration is bounded by $O(kn)$.
+Thus, the whole algorithm is $O(k n^2)$.\\
+
+\noindent \emph{Proof of correctness:}\\
+We will show that each vertex $v$ has the correct distance computed to each vertex $u$ introduced after it. This suffices to prove correctness.
+
+Let $v$ be the first vertex introduced.
+Then certainly the algorithm correctly computes the distance from $v$ to every vertex that is ever in the same bag as $v$ (dist = 1).
+What about vertices that are never in the same bag as $v$?
+If no such vertex exists, then $v$ is an apex vertex and all its distances are correctly computed as 1.
+
+Suppose $v$ is forgotten, and assume, by way of induction, that the algorithm has computed the correct distance from $v$ to all visited vertices up to and including the vertices in the current bag being iterated over.
+(Note in the ``base case'' that in the bag immediately after $v$ is forgotten this inductive assumption holds, i.e., $v$ has distance 1 to all vertices in that bag.)
+Now let $u$ be the next vertex introduced.
+The algorithm correctly computes distance = 1 from $u$ to each vertex in the current bag $X_i$ (since there is an edge from $u$ to every other vertex in $X_i$).
+Then, by induction we have the correct distances from $v$ to each vertex in $X_i$, and thus we can compute the correct minimum distance from $v$ to $u$ via the vertices in $X_i$.
+No other possible path from $v$ to $u$ is possible other than a path going through a vertex in $X_{i-1} = X_i-\{u\}$ because $X_{i-1}$ is a vertex-cut separating $v$ from $u$.\\
+
+This proves the algorithm gives the correct distances from the first vertex, $v$, to all vertices introduced after $v$.
+This same proof applies to any vertex $v_j$; that is, the correct distance is computed from $v_j$ to all vertices introduced after $v_j$ is.
+\end{proof}
+
+\end{document}
