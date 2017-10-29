@@ -17,7 +17,8 @@ Unlike the first proof review exercise, in this one all algorithms and proofs _s
 
 _Note: If you think that a proof is fatally broken, please post in `#problem-discussion` in Slack and tag the TA._
 
-Provide your feedback as `proof_review.pdf` in the `Week-11` folder.
+Provide your feedback as `proof_review.pdf` in the `Week-11` folder. The assignment is due at **9:00AM on Friday, November 3
+**.
 
 **CSC791 students**: There is no additional work for you on this assignment!
 
