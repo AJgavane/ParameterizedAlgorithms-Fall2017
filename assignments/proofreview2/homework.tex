@@ -111,7 +111,7 @@ Note that no actions are required for any bags other than \texttt{introduce} bag
 Then update the data structures as follows:
 \begin{enumerate}
 \item For each $u \in X_{i+1}$ that isn't $v_{i+1}$, set \verb|APSP[(v_{i+1}, u)] = 1|
-\item For each $y \in$ \verb|visited|, if $y \notin X_{i+1}$ then set \verb|APSP|$[(v_{i+1},y)] = 1 + \min\limits_{u \in X_i}$ \verb|APSP|$[(v_{i+1},u)]$
+\item For each $y \in$ \verb|visited|, if $y \notin X_{i+1}$ then set \verb|APSP|$[(v_{i+1},y)] = 1 + \min\limits_{u \in X_i}$ \verb|APSP|$[(u, y)]$
 \item Add $v_{i+1}$ to \verb|visited|
 \end{enumerate}
 
