@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{algorithm, algpseudocode}
+\usepackage{geometry}
+\usepackage{amsmath, amssymb, amsthm, enumerate, hyperref}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\usepackage{tabularx}
+\pagestyle{fancy}
+\lhead{\footnotesize Final Project}
+\chead{}
+\rhead{\footnotesize CSC (791/495)-011 -- Fall 2017}
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+
+\newcommand{\defproblem}[4]{%
+  \hfill\\\smallskip\noindent%
+  \begin{tabularx}{\textwidth}{|l X|}%
+    \hline%
+    \multicolumn{2}{|l|}{\pname{#1}}\\%
+    \textbf{Input:}&#2\\%
+    \textbf{Parameter:}&#3\\%
+    \textbf{Question:}&#4\smallskip\\\hline%
+  \end{tabularx}%
+  \smallskip%
+}%
+
+\newcommand{\pname}[1]{\textnormal{\textsc{#1}}}
+
+\newtheorem*{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma}{Lemma}
+
+
+\begin{document}
+
+\section*{Draft with Literature Review and Background}
+An initial draft of your report is due on \textbf{Friday, November 10 at 5:00PM}, which should consist of a literature review, a background/preliminaries section, and a bibtex file.
+
+\subsection*{Literature Review}
+The majority of the literature review should have been done for the midterm project, so keep the relevant parts of your previous work. Additionally, though, you should do a brief update related to your current approaches. Have you been working on variations of the original problem? Have you been trying certain approaches (reduction routines, approximation, etc.) that may have results in specialized venues? Update your literature review to be relevant to \emph{your} work, and not just the broad problem.
+
+As a general rule of thumb, you can expect your reader to be thinking the following questions:
+
+\begin{itemize}
+\item When was the problem defined, both initially and in it current formulation? (e.g. \textsc{Vertex Cover} is one of Karp's famous 21 NP-complete problems defined in 1972.)
+\item Are there any related (relevant) problems that are typically studied at the same time? (e.g. \textsc{Independent Set} is \textsc{Vertex Cover}'s dual, and \textsc{Odd Cycle Transversal} can be formulated as a \textsc{Vertex Cover} instance.)
+\item How hard is your problem? (e.g. \textsc{Vertex Cover} is NP-hard and APX-hard, but admits an FPT algorithm.)
+\item What relevant algorithmic approaches have previous researchers taken to this problem? (e.g. There are several kernelizations of \textsc{Vertex Cover}, along with a well-known 2-approximation.)
+\item Are there any relevant variations of the problem? (e.g. \textsc{Connected Vertex Cover} is a variation where the cover must induce a connected subgraph).
+\end{itemize}
+
+Note that several of these questions require you to gauge their relevance to your particular project -- there are probably too many variants and approaches to reasonably list! We recommend starting broadly with this draft and honing in as your results become more apparent.
+
+\subsection*{Background and Preliminaries}
+Roughly, the Background section of your paper should guide the reader into your report by covering the following items:
+\begin{itemize}
+\item Introduce the problem at a high level.
+\item Motivate the problem. It might be key to enabling an interesting application, or it might be a problem of significant theoretical interest.
+\item Define the mathematical notions necessary to understand your problem at a rigorous level. Also define what notation you are using for standard graph definitions.
+\item Clearly define the exact problem you are studying.
+\item Finally, provide a related works subsection that covers the literature review items above.
+\end{itemize}
+
+\subsection*{bibtex}
+One standard bibliography system for latex is bibtex. Instead of formatting the content yourself (as you would in MLA, for example), you populate common fields for each entry (e.g. author, title, journal, etc) and bibtex will format it for you.
+
+For this draft you should submit a clear and complete \texttt{.bib} file containing your citations. Some properties of a clear bibtex file:
+\begin{itemize}
+\item You use a clear naming convention for your reference handles. For example, \\ \texttt{[last\_name][publication\_year][title\_first\_word]} is pretty standard (e.g. goodrich2017draft.)
+\item Your \texttt{.bib} file should not contain duplicate entries.
+\item All citations should render correctly. If an author has an accent mark on their name, make sure it appears correctly. If an entry's title contains math, make sure it appears in math-mode. Make sure items are capitalized correctly.
+\item Tip: You should almost never write a bibtex entry from scratch. Typically you can generate a bibtex entry from the page where you found the paper (e.g. on Google Scholar). \emph{However}, the bibtex entry might not render how you want, so you should compile and adjust as necessary!
+\end{itemize}
+
+\subsubsection*{Submission notes}
+\begin{itemize}
+\item There is no need to make a separate submission, simply write in the \texttt{report} template you initialized during setup.
+\item Your \texttt{report} folder will be pulled on \textbf{Friday, November 10} at \text{5:00PM}. Make sure your \texttt{Makefile} correctly compiles the paper!
+\end{itemize}
+
+\end{document}
